@@ -1,0 +1,38 @@
+<%= form_for(@list) do |f| %>
+<% @list.user_id=session[:user_id] %>
+<% @list.apartment_id=@apartment %>
+  <% if @list.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@list.errors.count, "error") %> prohibited this list from being saved:</h2>
+
+      <ul>
+      <% @list.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :user_id%>
+    <br>
+    <p><%= User.find(session[:user_id]).name %></p>
+    <%= @apartment_id %>
+    <br>
+    <%= f.text_field :user_id %>  
+  </div>
+  <div class="field">
+
+    <%= f.label :apartment_id %><br />
+    <%= f.text_field :apartment_id %>
+    
+  </div>
+  <div class="field" align="center" >
+    <%= f.label :comment %><br />
+    <%= f.text_field :comment %>
+  </div>
+  
+  <div class="actions" align="center">
+    <%= f.submit %>
+  </div>
+<% end %>

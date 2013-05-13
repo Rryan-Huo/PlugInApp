@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+<h2>Profile for : <%= @user.name %></h2>
+
+<h2>Apartment Recorded: <%= @user.num %></h2>
+
+<h2>Record History:</h2>
+<% @lists=@user.ownlist %>
+<table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Apartment ID</th>
+          <th>Address</th>
+          <th>City</th>
+          <th>State</th>
+          <th>ZipCode</th>
+          <th>Neighborhood</th>
+          <th>Comment</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @lists.each do |list| %>
+        <% @apartment= list.apart %>
+         
+          <tr>
+            <td><%= @apartment.id %></td>
+            <td><%= @apartment.address %></td>
+            <td><%= @apartment.city %></td>
+            <td><%= @apartment.state %></td>
+            <td><%= @apartment.zipcode %></td>
+            <td><%= @apartment.neighborhood %></td>
+            <td><%= list.comment %></td>
+            <td><%= link_to 'Destroy', list, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %> |
+<%= link_to 'Add a new Apartment', new_apartment_path %>

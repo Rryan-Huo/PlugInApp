@@ -1,0 +1,33 @@
+
+<p id="notice"><%= notice %></p>
+<p>
+  <b>Apartment ID:</b>
+  <%= @apartment.id %>
+</p>
+
+<p>
+  <b>Street:</b>
+  <%= @apartment.address %>
+</p>
+
+<p>
+  <b>City:</b>
+  <%= @apartment.city %>
+</p>
+<p>
+  <b>State:</b>
+  <%= @apartment.state %>
+</p>
+<p>
+  <b>Zipcode:</b>
+  <%= @apartment.zipcode %>
+</p>
+<p>
+  <b>Neighborhood:</b>
+  <%= @apartment.neighborhood %>
+</p>
+<%= link_to 'Show the Website', @apartment.url %> |
+<%= link_to "Add to List", {:controller =>'lists',     :action => 'new',:apt =>@apartment.id} %> |
+<%= link_to 'Back', root_path %> |
+<%= link_to 'Edit', edit_apartment_path %>
+           
