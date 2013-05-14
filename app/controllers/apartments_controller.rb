@@ -6,8 +6,8 @@ class ApartmentsController < ApplicationController
 
     if params[:search].present?
       k = params[:search]
-      @apartments = Apartment.where("neighborhood LIKE ? OR zipcode = ?",
-                                "%#{k}%", k)
+      @apartments = Apartment.where("neighborhood LIKE ?",
+                                "%#{k}%")
     end
   end
   def show
